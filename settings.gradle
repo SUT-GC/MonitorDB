@@ -1,4 +1,6 @@
 rootProject.name = 'MonitorDB'
 include 'coredb'
 include 'server'
+include 'common'
+include 'test'
 

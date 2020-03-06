@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.monitordb'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(":coredb")
+    compile project(":server")
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.22.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

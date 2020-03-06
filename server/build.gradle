@@ -12,6 +12,8 @@ sourceCompatibility = 1.8
 dependencies {
     // core db
     compile project(":coredb")
+    // common project
+    compile project(":common")
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.22.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.22.RELEASE'

@@ -8,6 +8,12 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 dependencies {
+    // common project
+    compile project(":common")
+
     // rocks db
     compile group: 'org.rocksdb', name: 'rocksdbjni', version: '5.17.2'
+
+    // spring
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.22.RELEASE'
 }
