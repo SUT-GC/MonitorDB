@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '1.5.22.RELEASE'
+}
+
+group 'com.soul'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    // core db
+    compile project(":coredb")
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.22.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.22.RELEASE'
+}
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+jar {
+    enabled = true
+}
+
+springBoot {
+    mainClassName = 'com.modb.server.Application'
+}
+
+bootRepackage {
+    mainClass = 'com.modb.server.Application'
+}
+

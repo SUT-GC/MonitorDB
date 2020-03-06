@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+group 'com.monitordb'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    // rocks db
+    compile group: 'org.rocksdb', name: 'rocksdbjni', version: '5.17.2'
+}

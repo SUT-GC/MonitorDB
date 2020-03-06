@@ -1,3 +1,4 @@
-rootProject.name = 'MODB'
-include 'CoreDB'
+rootProject.name = 'MonitorDB'
+include 'coredb'
+include 'server'
 
