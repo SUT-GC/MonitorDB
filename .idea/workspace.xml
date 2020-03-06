@@ -2,36 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c3f4201-6a68-487d-8e35-73de2c2aa8ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coredb/src/main/java/com/modb/core/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coredb/src/main/java/com/modb/core/rocksdb/RocksDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coredb/src/main/java/com/modb/core/rocksdb/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/modb/server/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/modb/server/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreDB/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/coredb/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreDB/build/classes/java/main/com/modb/core/db/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/coredb/build/classes/java/main/com/modb/core/db/DB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreDB/src/main/java/com/modb/core/db/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/coredb/src/main/java/com/modb/core/db/DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreDB/src/main/java/com/modb/core/db/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/coredb/src/main/java/com/modb/core/db/package-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gcTest/2020/3/5/20/field.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gcTest/2020/3/5/20/tags.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gcTest/2020/3/5/21/fields.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gcTest/2020/3/5/21/seek.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gcTest/2020/3/5/21/tags.data" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +79,7 @@
       <recent name="$PROJECT_DIR$/server/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.Application">
     <configuration name="DB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.modb.core.db.DB" />
       <module name="MODB.CoreDB.main" />
@@ -112,8 +93,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="MonitorDB.server.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.modb.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.modb.server.Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Application.DB" />
       </list>
     </recent_temporary>
@@ -145,7 +140,7 @@
       <updated>1583407676924</updated>
       <workItem from="1583407681470" duration="7776000" />
       <workItem from="1583483211601" duration="4655000" />
-      <workItem from="1583490701976" duration="40000" />
+      <workItem from="1583490701976" duration="150000" />
     </task>
     <servers />
   </component>
@@ -169,38 +164,46 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="483" y="74" width="692" height="751" key="#xdebugger.evaluate/0.0.1440.900@0.0.1440.900" timestamp="1583414911967" />
-    <state width="1396" height="284" key="GridCell.Tab.0.bottom" timestamp="1583463183072">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.0.bottom" timestamp="1583490826688">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583463183072" />
-    <state width="1396" height="284" key="GridCell.Tab.0.center" timestamp="1583463183071">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826688" />
+    <state width="1878" height="370" key="GridCell.Tab.0.center" timestamp="1583490826685">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583463183071" />
-    <state width="1396" height="284" key="GridCell.Tab.0.left" timestamp="1583463183070">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826685" />
+    <state width="1878" height="370" key="GridCell.Tab.0.left" timestamp="1583490826684">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583463183070" />
-    <state width="1396" height="284" key="GridCell.Tab.0.right" timestamp="1583463183072">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826684" />
+    <state width="1878" height="370" key="GridCell.Tab.0.right" timestamp="1583490826687">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583463183072" />
-    <state width="1396" height="284" key="GridCell.Tab.1.bottom" timestamp="1583463183074">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826687" />
+    <state width="1878" height="370" key="GridCell.Tab.1.bottom" timestamp="1583490826693">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583463183074" />
-    <state width="1396" height="284" key="GridCell.Tab.1.center" timestamp="1583463183073">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826693" />
+    <state width="1878" height="370" key="GridCell.Tab.1.center" timestamp="1583490826691">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1583463183073" />
-    <state width="1396" height="284" key="GridCell.Tab.1.left" timestamp="1583463183073">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826691" />
+    <state width="1878" height="370" key="GridCell.Tab.1.left" timestamp="1583490826689">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1583463183073" />
-    <state width="1396" height="284" key="GridCell.Tab.1.right" timestamp="1583463183074">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1878" height="370" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826689" />
+    <state width="1878" height="370" key="GridCell.Tab.1.right" timestamp="1583490826692">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1396" height="284" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1583463183074" />
+    <state width="1878" height="370" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1583490826692" />
     <state x="469" y="179" key="SettingsEditor" timestamp="1583485498947">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

@@ -1,0 +1,13 @@
+# gradle
+.gradle
+gradle
+gradlew.bat
+gradlew
+
+# idea
+.idea
+
+# build
+*/build
+
+
