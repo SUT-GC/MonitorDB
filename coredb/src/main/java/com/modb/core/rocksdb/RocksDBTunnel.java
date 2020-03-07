@@ -1,5 +1,6 @@
 package com.modb.core.rocksdb;
 
+import com.modb.common.utils.TimeUtils;
 import com.modb.core.exception.rocksdb.RocksDBOperateException;
 import org.rocksdb.*;
 import org.slf4j.Logger;
@@ -11,16 +12,42 @@ import org.springframework.stereotype.Component;
  * rocks db tunnel component
  * all rocks db operate in this class
  */
-@Component
 public class RocksDBTunnel {
 
     private static final Logger logger = LoggerFactory.getLogger(RocksDBTunnel.class);
 
     private RocksDB rocksDB;
+    private String rocksDBPath;
 
-    @Autowired
-    public RocksDBTunnel(RocksDB rocksDB) {
-        this.rocksDB = rocksDB;
+    public RocksDBTunnel(String path) throws RocksDBOperateException {
+        this.rocksDBPath = path;
+        init();
+    }
+
+    private void init() throws RocksDBOperateException {
+        try {
+            this.rocksDB = RocksDB.open(initOption(), this.rocksDBPath);
+
+            logger.info("open rocks db success path: " + this.rocksDBPath);
+        } catch (Exception e) {
+            logger.error("open rocks db error path: " + this.rocksDBPath, e);
+
+            throw RocksDBOperateException.ofReadException(e);
+        }
+    }
+
+    private Options initOption() {
+        Options options = new Options();
+
+        options.setAllowMmapReads(true);
+        options.setAllowMmapWrites(true);
+
+        options.setCreateIfMissing(true);
+        options.setCreateMissingColumnFamilies(true);
+        options.setKeepLogFileNum(3);
+        options.setDeleteObsoleteFilesPeriodMicros(10 * TimeUtils.ONE_MINUTE * 1000);
+
+        return options;
     }
 
     /**
@@ -58,6 +85,11 @@ public class RocksDBTunnel {
     public String getStringKV(String key) throws RocksDBOperateException {
         try {
             byte[] valueBytes = this.rocksDB.get(key.getBytes());
+
+            if (valueBytes == null) {
+                return null;
+            }
+
             return new String(valueBytes);
 
         } catch (Exception e) {

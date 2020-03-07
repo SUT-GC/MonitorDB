@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 public class RocksDBOperateException extends BaseException {
     private static final String WRITE_EXCEPTION_CODE = "WRITE_EXCEPTION";
     private static final String READ_EXCEPTION_CODE = "READ_EXCEPTION";
+    private static final String INIT_EXCEPTION_CODE = "INIT_EXCEPTION";
 
     public RocksDBOperateException(String message, String code, Throwable throwable) {
         super(message, code, throwable);
@@ -33,5 +34,15 @@ public class RocksDBOperateException extends BaseException {
     public static RocksDBOperateException ofReadException(Throwable throwable) {
 
         return ofWriteException("read data error", throwable);
+    }
+
+    public static RocksDBOperateException ofInitException(String message, Throwable throwable) {
+
+        return new RocksDBOperateException(message, INIT_EXCEPTION_CODE, throwable);
+    }
+
+    public static RocksDBOperateException ofInitException(Throwable throwable) {
+
+        return ofInitException("init db error", throwable);
     }
 }
