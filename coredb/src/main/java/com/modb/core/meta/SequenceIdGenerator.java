@@ -21,53 +21,60 @@ public class SequenceIdGenerator {
 
     private RocksDBTunnel metaDB;
 
-    private Map<String, AtomicLong> sidSeedMap = new ConcurrentHashMap<>();
-    private Map<String, String> sidPathMap = new ConcurrentHashMap<>();
+    private Map<String, AtomicLong> sidSeedMap = null;
+    private Map<String, String> sidPathMap = null;
 
     @Autowired
     public SequenceIdGenerator(RocksDBTunnel metaDB) {
         this.metaDB = metaDB;
-        asyncWriteMetaDB();
     }
 
     public String genSid(String project, LocalDateTime localDateTime) {
+        if (sidSeedMap == null) {
+            syncReadMetaDB(project);
+        }
+
         String path = TimeUtils.genPathFromLocalDateTime(localDateTime);
+
+        String sid = null;
+
         if (sidPathMap.get(project) != null && sidPathMap.get(project).equals(path)) {
             long sidSeed = this.sidSeedMap.get(project).incrementAndGet();
-            return path + "/" + sidSeed;
+            sid = path + "/" + sidSeed;
         }
 
         if (sidPathMap.get(project) != null && !sidPathMap.get(project).equals(path)) {
             this.sidPathMap.put(project, path);
             this.sidSeedMap.put(project, new AtomicLong(0));
             long sidSeed = this.sidSeedMap.get(project).incrementAndGet();
-            return path + "/" + sidSeed;
+            sid = path + "/" + sidSeed;
         }
 
-        boolean read = syncReadMetaDB(project);
-        if (!read) {
+        if (sidPathMap.get(project) == null) {
             this.sidPathMap.put(project, path);
             this.sidSeedMap.put(project, new AtomicLong(0));
             long sidSeed = this.sidSeedMap.get(project).incrementAndGet();
-            return path + "/" + sidSeed;
+            sid = path + "/" + sidSeed;
+
         }
 
-        return genSid(project, localDateTime);
+        asyncWriteMetaDB();
+
+        return sid;
     }
 
-    private boolean syncReadMetaDB(String project) {
+    private synchronized boolean syncReadMetaDB(String project) {
         try {
             String path = this.metaDB.getStringKV(project + "path");
             String seed = this.metaDB.getStringKV(project + "seed");
 
-            if (path == null) {
-                return false;
+            this.sidPathMap = new ConcurrentHashMap<>();
+            this.sidSeedMap = new ConcurrentHashMap<>();
+
+            if (path != null && seed != null) {
+                this.sidPathMap.put(project, path);
+                this.sidSeedMap.put(project, new AtomicLong(Long.parseLong(seed)));
             }
-
-            this.sidPathMap.put(project, path);
-            this.sidSeedMap.put(project, new AtomicLong(Long.parseLong(seed)));
-
-
         } catch (RocksDBOperateException e) {
             // pass
         }
@@ -79,15 +86,12 @@ public class SequenceIdGenerator {
         MetaDBExecutors.RECORD_SEQUENCE.execute(() -> {
             dumpSidSeedMap();
             dumpSidPathMap();
-            try {
-                Thread.sleep(500);
-            } catch (Exception e) {
-                logger.error("sequence id async write meta db sleep error", e);
-            }
         });
     }
 
-    private void dumpSidPathMap() {
+    private synchronized void dumpSidPathMap() {
+        logger.info("dump sid path..." + this.sidPathMap);
+
         if (this.sidPathMap.isEmpty()) {
             return;
         }
@@ -101,7 +105,9 @@ public class SequenceIdGenerator {
         });
     }
 
-    private void dumpSidSeedMap() {
+    private synchronized void dumpSidSeedMap() {
+        logger.info("dump sid seed..." + this.sidSeedMap);
+
         if (this.sidSeedMap.isEmpty()) {
             return;
         }

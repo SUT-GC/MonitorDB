@@ -39,8 +39,16 @@ public class TestRocksMonitorDB {
             fields.put("fieldKey2", "fieldValue2");
 
             monitorDB.write(project, tags, fields, LocalDateTime.now());
+
+            Thread.sleep(1000);
         } catch (Exception e) {
             Assert.fail();
         }
+    }
+
+    @Test
+    public void testReadTag() throws RocksDBOperateException {
+        Map<String, String> v = monitorDB.readTag(project, "/2020/3/10/22/6", LocalDateTime.now());
+        System.out.println(v);
     }
 }

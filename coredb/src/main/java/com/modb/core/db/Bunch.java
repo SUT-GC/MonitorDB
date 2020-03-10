@@ -1,5 +1,6 @@
 package com.modb.core.db;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.modb.common.utils.FileUtils;
 import com.modb.common.utils.JacksonUtils;
 import com.modb.common.utils.TimeUtils;
@@ -13,6 +14,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 public class Bunch {
@@ -69,5 +71,15 @@ public class Bunch {
 
         this.tagDB.writeStringKV(sid, tagStr);
         this.fieldDB.writeStringKV(sid, filedStr);
+    }
+
+    public Map<String, String> readTags(String sid) throws RocksDBOperateException {
+        String tagStr = this.tagDB.getStringKV(sid);
+        if (tagStr == null) {
+            return Collections.emptyMap();
+        }
+
+        return JacksonUtils.fromJsonStringCoverE(tagStr, new TypeReference<Map<String, String>>() {{
+        }});
     }
 }

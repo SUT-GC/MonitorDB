@@ -86,7 +86,7 @@ public class RocksDBTunnel {
         try {
             byte[] valueBytes = this.rocksDB.get(key.getBytes());
 
-            if (valueBytes == null) {
+            if (valueBytes == null || valueBytes.length <= 0) {
                 return null;
             }
 
