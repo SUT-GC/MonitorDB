@@ -118,7 +118,7 @@ public class SequenceIdGenerator {
         });
 
         try {
-            metaDB.batchWriteStringKV(this.sidPathMap);
+            metaDB.batchWriteStringKV(kvs);
         } catch (RocksDBOperateException e) {
             // pass
         }
