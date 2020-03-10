@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 /**
  * rocks db tunnel component
  * all rocks db operate in this class
@@ -67,6 +69,30 @@ public class RocksDBTunnel {
             writeBatch.clear();
         } catch (Exception e) {
             logger.error(String.format("write rocks db error key:%s, value:%s", key, value));
+
+            throw RocksDBOperateException.ofWriteException(e);
+        }
+    }
+
+    /**
+     * batch write ky but key and value both are string type
+     * <p>
+     * if write exception, will throws @see RocksDBOperateException
+     * </p>
+     *
+     * @param kvs k and v gen to map
+     * @throws RocksDBOperateException rocks db operate exception
+     */
+    public void batchWriteStringKV(Map<String, String> kvs) throws RocksDBOperateException {
+        try (WriteOptions options = new WriteOptions(); WriteBatch writeBatch = new WriteBatch()) {
+            for (Map.Entry<String, String> kv : kvs.entrySet()) {
+                writeBatch.put(kv.getKey().getBytes(), kv.getValue().getBytes());
+            }
+
+            this.rocksDB.write(options, writeBatch);
+            writeBatch.clear();
+        } catch (Exception e) {
+            logger.error(String.format("batch write rocks db error kvs:%s", kvs));
 
             throw RocksDBOperateException.ofWriteException(e);
         }

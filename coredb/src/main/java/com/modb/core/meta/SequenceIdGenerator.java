@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -96,13 +97,12 @@ public class SequenceIdGenerator {
             return;
         }
 
-        this.sidPathMap.forEach((k, v) -> {
-            try {
-                metaDB.writeStringKV(k + "path", v);
-            } catch (Exception e) {
-                // pass
-            }
-        });
+
+        try {
+            metaDB.batchWriteStringKV(this.sidPathMap);
+        } catch (RocksDBOperateException e) {
+            // pass
+        }
     }
 
     private synchronized void dumpSidSeedMap() {
@@ -112,12 +112,15 @@ public class SequenceIdGenerator {
             return;
         }
 
+        Map<String, String> kvs = new HashMap<>(this.sidSeedMap.size());
         this.sidSeedMap.forEach((k, v) -> {
-            try {
-                metaDB.writeStringKV(k + "seed", v.longValue() + "");
-            } catch (Exception e) {
-                // pass
-            }
+            kvs.put(k, v.toString());
         });
+
+        try {
+            metaDB.batchWriteStringKV(this.sidPathMap);
+        } catch (RocksDBOperateException e) {
+            // pass
+        }
     }
 }
