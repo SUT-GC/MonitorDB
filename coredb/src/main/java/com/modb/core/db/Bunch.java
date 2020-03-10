@@ -1,5 +1,6 @@
 package com.modb.core.db;
 
+import com.modb.common.utils.FileUtils;
 import com.modb.common.utils.JacksonUtils;
 import com.modb.common.utils.TimeUtils;
 import com.modb.core.exception.rocksdb.RocksDBOperateException;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Map;
 
 public class Bunch {
@@ -45,12 +47,18 @@ public class Bunch {
             this.bunchPath = rootPath + bunchPathE;
         }
 
+        String metaDBPath = bunchPath + META_DB_FILE;
+        String tagDBPath = bunchPath + TAG_DB_FILE;
+        String fieldDBPath = bunchPath + FIELD_DB_FILE;
+
+        FileUtils.mkdirs(Arrays.asList(rootPath, bunchPath, metaDBPath, tagDBPath, fieldDBPath));
+
         // init meta db
-        this.metaDB = RocksDBFactory.gen(bunchPath + META_DB_FILE);
+        this.metaDB = RocksDBFactory.gen(metaDBPath);
         // init tag db
-        this.tagDB = RocksDBFactory.gen(bunchPath + TAG_DB_FILE);
+        this.tagDB = RocksDBFactory.gen(tagDBPath);
         // init field db
-        this.fieldDB = RocksDBFactory.gen(bunchPath + FIELD_DB_FILE);
+        this.fieldDB = RocksDBFactory.gen(fieldDBPath);
 
         logger.info("bunch init success, path: " + this.bunchPath);
     }
